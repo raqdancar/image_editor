@@ -13,7 +13,8 @@ Aquesta aplicació ha estat desenvolupada en el marc de la PAC1 de la UOC, a l'a
 
 1. Obre l'arxiu `index1.html` en el teu navegador web.
 2. Segueix les instruccions que es mostren en pantalla per aplicar les modificacions sobre la imatge.
-3. Observa com la imatge es mou, gira o canvia de mida segons el exercici que estiguis executant.
+3. Observa com la imatge es mou, gira 
+ canvia de mida segons el exercici que estiguis executant.
 4. Canvia d'exercici obrint un altre fitxer .html o navegant a través del menu que trobaras al final del text.
 
 ## Arxius del Projecte
