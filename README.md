@@ -1,6 +1,7 @@
 # Aplicació de Modificació d'Imatges amb p5.js
 
 Aquesta aplicació web et permet modificar imatges utilitzant la biblioteca p5.js. Pots realitzar diverses transformacions geomètriques com translacions, rotacions i escalats, així com aplicar filtres i efectes a les imatges carregades.
+Aquesta aplicació ha estat desenvolupada en el marc de la PAC1 de la UOC, a l'assignatura de Projecte Media, en el grau de Tecniques d'interacció digital i Multimedia.
 
 ## Funcionalitats
 
