@@ -1,48 +1,48 @@
-// Variable para almacenar la imagen original
+// Variable per emmagatzemar la imatge original
 let img;
 
-// Variables para el tamaño original de la imagen
+// Variables per al tamany original de la imatge
 let originalWidth;
 let originalHeight;
 
 function preload() {
-    // Cargar la imagen antes de que comience el programa
-    img = loadImage('images/imatge_color.png');
+    // Carregar la imatge abans que comenci el programa
+    img = loadImage('imatges/imatge_color.png');
 }
 
 function setup() {
-    // Crear un lienzo del tamaño de la ventana del navegador
+    // Crear un canvas del tamany de la finestra del navegador
     createCanvas(windowWidth, windowHeight);
-    // Colocar la imagen en el centro del lienzo
+    // Col·locar la imatge al centre del canvas
     imageMode(CENTER);
-    // Almacenar el tamaño original de la imagen
+    // Emmagatzemar el tamany original de la imatge
     originalWidth = img.width;
     originalHeight = img.height;
-    // Dibujar la imagen en el lienzo
+    // Dibuixar la imatge al canvas
     drawImage();
 }
 
 function drawImage() {
-    // Limpiar el lienzo
+    // Netejar el canvas
     clear();
-    // Dibujar la imagen en el centro del lienzo con su tamaño original
+    // Dibuixar la imatge al centre del canvas amb el seu tamany original
     image(img, width / 2, height / 2, originalWidth, originalHeight);
 }
 
 function mouseClicked() {
-    // Generar valores aleatorios para las transformaciones
+    // Generar valors aleatoris per a les transformacions
     let newX = random(width);
     let newY = random(height);
     let rotation = random(TWO_PI);
     let scaleFactor = random(0.5, 2);
 
-    // Aplicar las transformaciones a la imagen
+    // Aplicar les transformacions a la imatge
     push();
     translate(newX, newY);
     rotate(rotation);
     scale(scaleFactor);
 
-    // Dibujar la imagen en el lienzo
+    // Dibuixar la imatge al canvas
     drawImage();
     pop();
 }

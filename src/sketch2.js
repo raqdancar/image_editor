@@ -1,58 +1,53 @@
-// Cargar la imatge
+// Carregar la imatge
 let img;
 
 function preload() {
-    img = loadImage("images/imatge_color.png");
+    img = loadImage("imatges/imatge_color.png");
     canvas.style('cursor', 'default');
-
 }
 
 function setup() {
-    // Obtener el elemento div con id "lienzo"
+    // Obtenir l'element div amb id "lienzo"
     let lienzoDiv = select("#lienzo");
 
-    
-    // Crear un lienzo dentro del div
+    // Crear un canvas dins del div
     let canvas = createCanvas(img.width, img.height);
-    // Adjuntar el lienzo al div
+    // Adjuntar el canvas al div
     canvas.parent(lienzoDiv);
-    // Dibuja la imagen en el lienzo
+    // Dibuixar la imatge al canvas
     image(img, 0, 0);
 
-    // Obtener los niveles RGB del píxel (50, 80)
+    // Obtindre els nivells RGB del píxel (50, 80)
     let pixelColor = get(50, 80);
 
-    // Mostrar los niveles RGB en la página web
+    // Mostrar els nivells RGB a la pàgina web
     let rgbValuesDiv = select("#rgb-values");
     rgbValuesDiv.html(
         `R: ${pixelColor[0]}, G: ${pixelColor[1]}, B: ${pixelColor[2]}`
     );
 
-    // Agregar un evento para detectar cuando el usuario pasa el puntero sobre la imagen
+    // Afegir un esdeveniment per a detectar quan l'usuari mou el cursor sobre la imatge
     canvas.mouseMoved(getPixelColor);
-
 }
 
 function getPixelColor() {
-    // Obtener las coordenadas del píxel sobre el que se encuentra el puntero
+    // Obtindre les coordenades del píxel sobre el qual es troba el cursor
     let x = mouseX;
     let y = mouseY;
 
-    // Truncar las coordenadas a solo tres números antes del punto decimal
+    // Arrodonir les coordenades a només tres dígits abans del punt decimal
     let truncatedX = Math.floor(x);
     let truncatedY = Math.floor(y);
-    
-    // Obtener los niveles RGB del píxel en las coordenadas (x, y)
+
+    // Obtindre els nivells RGB del píxel en les coordenades (x, y)
     let pixelColor = get(x, y);
 
-    // Mostrar las coordenadas y los niveles RGB en la página web
+    // Mostrar les coordenades i els nivells RGB a la pàgina web
     let infoDiv = select('#info');
-    infoDiv.html(`Coordenadas del píxel: (${truncatedX}, ${truncatedY})<br>RGB: ${pixelColor[0]}, ${pixelColor[1]}, ${pixelColor[2]}`);
+    infoDiv.html(`Coordenades del píxel: (${truncatedX}, ${truncatedY})<br>RGB: ${pixelColor[0]}, ${pixelColor[1]}, ${pixelColor[2]}`);
 
     // Mostrar el color
     let rgbColorview = select("#color-box");
     rgbColorview.style('background-color', `rgb(${pixelColor[0]}, ${pixelColor[1]}, ${pixelColor[2]})`);
     select('body').style('cursor', 'crosshair');
-
-
 }

@@ -1,58 +1,58 @@
-
-// Variable para almacenar la imagen original sin modificaciones
+// Variable per emmagatzemar la imatge original sense modificacions
 let imgOriginal;
 
-// Variable para almacenar la imagen actual (con modificaciones)
+// Variable per emmagatzemar la imatge actual (amb modificacions)
 let imgActual;
 
 function preload() {
-    imgOriginal = loadImage("images/imatge_grey.png");
+    // Carregar la imatge original abans que comenci el programa
+    imgOriginal = loadImage("imatges/imatge_grey.png");
 }
 
 function setup() {
-    // Obtener el elemento div con id "lienzo"
+    // Obtindre l'element div amb id "lienzo"
     let lienzoDiv = select("#lienzo");
-    // Crear un lienzo dentro del div
+    // Crear un canvas dins del div
     let canvas = createCanvas(imgOriginal.width, imgOriginal.height);
 
-    // Adjuntar el lienzo al div
+    // Adjuntar el canvas al div
     canvas.parent(lienzoDiv);
-    // Dibuja la imagen en el lienzo
+    // Dibuixar la imatge al canvas
     image(imgOriginal, 0, 0);
     imgActual = imgOriginal.get();
-
 }
+
 function keyPressed() {
-    // Clonar la imagen original para trabajar con una copia
+    // Clonar la imatge original per treballar amb una còpia
     imgActual = imgOriginal.get();
     switch (key) {
         case "D":
         case "d":
-            // Aplicar el filtro de erosión
+            // Aplicar el filtre d'erosió
             imgActual.filter(ERODE);
-
             break;
         case "L":
         case "l":
-            // Aplicar el filtro de umbral
-            imgActual.filter(THRESHOLD); 
+            // Aplicar el filtre de llindar
+            imgActual.filter(THRESHOLD);
             break;
         default:
             break;
     }
-    // Actualizar el lienzo con la imagen modificada
+    // Actualitzar el canvas amb la imatge modificada
     updateCanvas();
 }
 
 function keyReleased() {
-    // Restaurar la imagen original cuando se suelta la tecla
+    // Restaurar la imatge original quan es deixa anar la tecla
     imgActual = imgOriginal.get();
-    // Actualizar el lienzo con la imagen original
+    // Actualitzar el canvas amb la imatge original
     updateCanvas();
 }
+
 function updateCanvas() {
-    // Limpiar el lienzo
+    // Netejar el canvas
     clear();
-    // Dibujar la imagen actual en el lienzo
+    // Dibuixar la imatge actual al canvas
     image(imgActual, 0, 0);
 }

@@ -1,65 +1,65 @@
-// Variable para almacenar la imagen original sin modificaciones
+// Variable per enmmagatzemar la imatge original sense modificacions
 let imgOriginal;
 
-// Variable para almacenar la imagen actual (con modificaciones)
+// Variable per enmmagatzemar la imatge modificada i que es mostra actualment a l'aplicació
 let imgActual;
 
 function preload() {
-    // Carga la imagen original antes de que comience el programa
-    imgOriginal = loadImage('images/imatge_color.png');
+    // Carregar la imatge original abans de que començi el programa
+    imgOriginal = loadImage('imatges/imatge_color.png');
 }
 
 function setup() {
-    // Obtener el elemento div con id "lienzo"
+    // Obtenir l'element div amb la id "lienzo"
     let lienzoDiv = select('#lienzo');
 
-    // Crear un lienzo dentro del div
+    // Crear un "lienzo" dins del div
     let canvas = createCanvas(imgOriginal.width, imgOriginal.height);
-    // Adjuntar el lienzo al div
+    // Adjuntar el "lienzo" al div
     canvas.parent(lienzoDiv);
-    // Dibuja la imagen en el lienzo
+    // Dibuixar l'imatge a dins el "lienzo"
     image(imgOriginal, 0, 0);
 
-    // Al inicio, la imagen actual es la misma que la original
+    // A l'inici, la imatge actual es la mateixa que l'original
     imgActual = imgOriginal.get();
 }
+
 function showLastKey() {
-
-    // Obtener el elemento <p> para mostrar la última letra pulsada
+    // Obtenir l'element <p> per mostrar l'última lletra polsada
     let ultimaLetraElemento = select('#ultima-letra');
-    // Actualizar el contenido del elemento <p> con la última letra pulsada
+    // Actualitzar el contingut de l'element <p> amb la última lletra polsada
     ultimaLetraElemento.html('Última lletra polsada: ' + ultimaLetraPulsada);
-
 }
+
 function keyPressed() {
     ultimaLetraPulsada = key;
-    // Restaura la imagen actual a la imagen original sin modificaciones
+    // Restaura l'imatge actual a la imatge original sense modificacions
     imgActual = imgOriginal.get();
     switch (key) {
         case "L":
         case "l":
-            // Realiza la erosión de la imagen
+            // Realitza l'erosió de l'imatge
             imgActual.filter(ERODE);
             break;
         case "A":
         case "a":
-            // Realiza la posterización de la imagen con nivel 3
+            // Realitza la posterizació de la imatge amb nivell 3
             imgActual.filter(POSTERIZE, 3);
             break;
         case "R":
         case "r":
-            // Realiza la binarización de la imagen con un umbral de 120
+            // Realitza la binarización de la imatge amb un ombral de 120
             imgActual.filter(THRESHOLD, 120);
             break;
         case "O":
         case "o":
-            // Realiza el efecto negativo de la imagen
+            // Realitza el efecte negatiu de l'imatge
             imgActual.filter(INVERT);
             break;
         default:
             break;
     }
-    // Actualiza la imagen en el lienzo
+    // Actualitza l'imatge a dins del "lienzo"
     updateCanvas();
     showLastKey();
 }

@@ -11,7 +11,7 @@ let currentHeight;
 
 function preload() {
     // Carregar la imatge abans que comenci el programa
-    img = loadImage('images/imatge_color.png');
+    img = loadImage('imatges/imatge_color.png');
 }
 
 function setup() {
@@ -30,7 +30,7 @@ function setup() {
 }
 
 function dibuixarImatge() {
-    // Netegar el lienç
+    // Netejar el lienç
     clear();
     // Dibuixar la imatge al centre del lienç amb les seves dimensions actuals
     image(img, width / 2, height / 2, currentWidth, currentHeight);
